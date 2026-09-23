@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+
+  transition:
+    background-color .3s,
+    color .3s;
+}
+
+@keyframes typewriter-word {
+  0%, 4% {
+    opacity: 1;
+    width: 0;
+  }
+  12%, 28% {
+    opacity: 1;
+    width: 100%;
+  }
+  36%, 40% {
+    opacity: 1;
+    width: 0;
+  }
+  41%, 100% {
+    opacity: 0;
+    width: 0;
+  }
+}
+
+@keyframes typewriter-cursor {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes description-typewriter {
+  0%, 8% {
+    clip-path: inset(0 100% 0 0);
+  }
+  48%, 62% {
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
+.typewriter {
+  position: relative;
+  min-height: 1.2em;
+}
+
+.typewriter::after {
+  content: "|";
+  animation: typewriter-cursor 0.8s steps(1, end) infinite;
+  color: currentColor;
+}
+
+.typewriter-word {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  animation: typewriter-word 6s steps(24, end) infinite;
+}
+
+.typewriter-word:nth-child(2) {
+  animation-delay: 2s;
+}
+
+.typewriter-word:nth-child(3) {
+  animation-delay: 4s;
+}
+
+.description-typewriter {
+  position: relative;
+  animation: description-typewriter 5s steps(176, end) infinite;
+}
+
+.description-typewriter::after {
+  content: "|";
+  animation: typewriter-cursor 0.8s steps(1, end) infinite;
+  color: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter::after,
+  .typewriter-word,
+  .description-typewriter {
+    animation: none;
+  }
+
+  .typewriter-word:first-child {
+    opacity: 1;
+    width: auto;
+  }
+
+  .description-typewriter {
+    clip-path: none;
+  }
+
+}
