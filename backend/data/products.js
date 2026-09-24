@@ -12,9 +12,9 @@ const products = [
         image: "/products/macbook.jpg",
         images: [
             "/products/macbook.jpg",
-            "/products/keyboard.jpg",
-            "/products/iphone.jpg",
-            "/products/headphones.jpg",
+            "/products/macbook.jpg",
+            "/products/macbook.jpg",
+            "/products/macbook.jpg",
         ],
         price: 184999,
         originalPrice: 199999,
