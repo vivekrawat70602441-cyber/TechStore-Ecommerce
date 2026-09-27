@@ -5,7 +5,7 @@ dotenv.config();
 
 const testAtlasConnection = async () => {
     try {
-        console.log("🔄 Connectiing to MongoDB Atlas...");
+        console.log("🔄 Connecting to MongoDB Atlas...");
         await mongoose.connect(process.env.ATLAS_URL);
         console.log("✅ MongoDB Atlas Connected Successfully");
         await mongoose.connection.close();
