@@ -140,8 +140,8 @@ export default function ProductEditPage() {
 
     if (loading) {
         return (
-            <div className="flex min-h-100 items-center justify-center">
-                <p className="text-gray-600 dark:text-gray-300">
+            <div className="flex min-h-100 items-center justify-center px-4">
+                <p className="text-sm text-gray-600 sm:text-base dark:text-gray-300">
                     Loading product...
                 </p>
             </div>
@@ -150,15 +150,17 @@ export default function ProductEditPage() {
 
     if (!product) {
         return (
+          <div className="w-full min-w-0">
             <ProductEditHeader
                 notFound
                 error={error}
             />
+          </div>
         );
     }
 
     return (
-        <main className="space-y-8">
+        <main className="w-full min-w-0 space-y-6 sm:space-y-8">
             <ProductEditHeader />
 
             <ProductEditMessages

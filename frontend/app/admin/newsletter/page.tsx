@@ -29,8 +29,7 @@ export default function NewsletterPage() {
 
             const response = await authFetch(`${API}/newsletter`, {
                 method: "GET",
-                headers: {
-                },
+                headers: {},
             });
 
             const data = await response.json();
@@ -59,8 +58,8 @@ export default function NewsletterPage() {
 
     if (loading) {
         return (
-            <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-slate-950">
-                <p className="text-gray-600 dark:text-gray-300">
+            <div className="flex min-h-[70vh] items-center justify-center bg-gray-50 px-4 dark:bg-slate-950">
+                <p className="text-sm text-gray-600 sm:text-base dark:text-gray-300">
                     Loading subscribers...
                 </p>
             </div>
@@ -69,17 +68,17 @@ export default function NewsletterPage() {
 
     if (!token || !isAdmin) {
         return (
-            <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-slate-950">
-                <div className="text-center">
+            <div className="flex min-h-[70vh] items-center justify-center bg-gray-50 px-4 dark:bg-slate-950">
+                <div className="w-full max-w-md text-center">
                     <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
                         Access Denied
                     </h1>
-                    <p className="mt-2 text-gray-500 dark:text-gray-400">
+                    <p className="mt-2 text-sm text-gray-500 sm:text-base dark:text-gray-400">
                         You do not have permission to access this page.
                     </p>
                     <button
                         onClick={() => router.push("/")}
-                        className="mt-6 rounded-lg bg-blue-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-700"
+                        className="mt-6 w-full rounded-lg bg-blue-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-700 sm:w-auto"
                     >
                         Go Home
                     </button>
@@ -89,37 +88,39 @@ export default function NewsletterPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 p-6 transition-colrs duration-300 dark:bg-slate-950">
+        <div className="bg-gray-50 dark:bg-slate-950">
             <div className="mx-auto max-w-7xl">
-                <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
-                    <div>
-                        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+                <div className="mb-6 sm:mb-8">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                        <div className="min-w-0">
+                        <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white">
                             Newsletter Subscribers
                         </h1>
-                        <p className="mt-1 text-gray-500 dark:text-gray-400">
+                        <p className="mt-1 text-sm text-gray-500 sm:text-base dark:text-gray-400">
                             Managers users subscribed to your newsletter.
                         </p>
                     </div>
 
                     <button
                         onClick={fetchSubscribers}
-                        className="rounded-lg bg-blue-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-700"
+                        className="w-full rounded-lg bg-blue-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-700 sm:w-auto"
                     >
                         Refresh
                     </button>
                 </div>
+        </div>
 
                 {error && (
-                    <div className="mb-6 rounded-lg border border-red-200 bg-red-500 p-4 text-red-600 dark:border-red-900 dark:bg-red-950/30 dark:text-red-400">
+                    <div className="mb-6 wrap-break-word rounded-lg border border-red-200 bg-red-50 p-4 text-sm leading-6 text-red-600 dark:border-red-900 dark:bg-red-950/30 dark:text-red-400">
                         {error}
                     </div>
                 )}
 
-                <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                <div className="mb-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:p-6 dark:border-slate-800 dark:bg-slate-900">
                     <p className="text-sm text-gray-500 dark:text-gray-400">
                         Total Subscribers
                     </p>
-                    <p className="mt-2 text-3xl font-bold text-gray-900 dark:text-white">
+                    <p className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white">
                         {subscribers.length}
                     </p>
                 </div>
@@ -129,15 +130,15 @@ export default function NewsletterPage() {
                         <table className="w-full min-w-150">
                             <thead className="border-b border-gray-200 bg-gray-50 dark:border-slate-800 dark:bg-slate-800/50">
                                 <tr>
-                                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
+                                    <th className="whitespace-nowrap px-4 py-4 text-left text-sm font-semibold text-gray-700 sm:px-6 dark:text-gray-300">
                                         #
                                     </th>
 
-                                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
+                                    <th className="whitespace-nowrap px-4 py-4 text-left text-sm font-semibold text-gray-700 sm:px-6 dark:text-gray-300">
                                         Email
                                     </th>
 
-                                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">
+                                    <th className="whitespace-nowrap px-4 py-4 text-left text-sm font-semibold text-gray-700 sm:px-6 dark:text-gray-300">
                                         Subscribed On
                                     </th>
                                 </tr>
@@ -148,7 +149,7 @@ export default function NewsletterPage() {
                                     <tr>
                                         <td
                                             colSpan={3}
-                                            className="px-6 py-12 text-center text-gray-500 dark:text-gray-400"
+                                            className="px-4 py-10 text-center text-sm text-gray-500 sm:px-6 sm:py-12 dark:text-gray-400"
                                         >
                                             No newsletter subscribers yet.
                                         </td>
@@ -160,14 +161,16 @@ export default function NewsletterPage() {
                                                 key={subscriber._id}
                                                 className="border-b border-gray-100 last:border-b-0 dark:border-slate-800"
                                             >
-                                                <td className="px-6 py-4 text-sm text-gray-700 dark:text-gray-300">
+                                                <td className="px-4 py-4 text-sm text-gray-700 sm:px-6 dark:text-gray-300">
                                                     {index + 1}
                                                 </td>
-                                                <td className="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">
+                                                <td className="px-4 py-4 text-sm font-medium text-gray-900 sm:px-6 dark:text-white">
+                                                  <span className="whitespace-nowrap">
                                                     {subscriber.email}
+                                                  </span>
                                                 </td>
 
-                                                <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                                                <td className="whitespace-nowrap px-4 py-4 text-sm text-gray-500 sm:px-6 dark:text-gray-400">
                                                     {new Date(
                                                         subscriber.createdAt
                                                     ).toLocaleDateString(

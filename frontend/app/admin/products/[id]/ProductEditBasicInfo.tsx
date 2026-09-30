@@ -16,7 +16,7 @@ export default function ProductEditBasicInfo({
 }: ProductEditBasicInfoProps) {
     return (
         <>
-            <div>
+            <div className="min-w-0">
                 <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                     Product Name
                 </label>
@@ -28,12 +28,12 @@ export default function ProductEditBasicInfo({
                         handleChange("name", e.target.value)
                     }
                     required
-                    className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                    className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
                 />
             </div>
 
-            <div>
-                <label className="mb-2 block text-sm font-medium tet-gray-700 dark:text-gray-300">
+            <div className="min-w-0">
+                <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                     Brand
                 </label>
 
@@ -44,11 +44,11 @@ export default function ProductEditBasicInfo({
                         handleChange("brand", e.target.value)
                     }
                     required
-                    className='w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white'
+                    className='w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white'
                 />
             </div>
 
-            <div>
+            <div className="min-w-0">
                 <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                     Slug
                 </label>
@@ -60,11 +60,11 @@ export default function ProductEditBasicInfo({
                         handleChange("slug", e.target.value)
                     }
                     required
-                    className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                    className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
                 />
             </div>
 
-            <div>
+            <div className="min-w-0">
                 <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                     Category
                 </label>
@@ -76,12 +76,12 @@ export default function ProductEditBasicInfo({
                         handleChange("category", e.target.value)
                     }
                     required
-                    className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                    className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
                 />
             </div>
 
-            <div>
-                <label className="mb-2">
+            <div className="min-w-0">
+                <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                     SKU
                 </label>
 
@@ -91,7 +91,7 @@ export default function ProductEditBasicInfo({
                     onChange={(e) =>
                         handleChange("sku", e.target.value)
                     }
-                    className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                    className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
                 />
             </div>
         </>

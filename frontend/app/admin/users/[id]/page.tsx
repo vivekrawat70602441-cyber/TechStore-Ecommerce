@@ -35,6 +35,7 @@ export default function AdminUserDetailsPage() {
             try {
 
                 setLoading(true);
+                setError("");
 
                 const data = await getAdminUser(userId);
 
@@ -53,35 +54,54 @@ export default function AdminUserDetailsPage() {
         };
 
         loadUser();
-    }, [
-        authLoading,
-        token,
-        isAdmin,
-        userId,
-    ]);
+    }, [authLoading, token, isAdmin, userId]);
 
     if (authLoading || loading) {
         return (
-            <div className="p-6">
-                Loading...
+            <div className="flex min-h-[70vh] items-center justify-center px-4">
+                <p className="text-sm text-gray-600 sm:text-base dark:text-gray-400">
+                    Loading user...
+                </p>
             </div>
         );
     }
 
     if (!isAdmin) {
         return (
-            <div className="p-6">
-                Access Denied
+            <div className="flex min-h-[70vh] items-center justify-center px-4">
+                <div className="text-center">
+                    <h1 className="text-2xl font-bold text-red-600">
+                        Access Denied
+                    </h1>
+                    <p className="mt-2 text-sm text-gray-600 sm:text-base dark:text-gray-400">
+                        You do not have permission to view this user.
+                    </p>
+                </div>
             </div>
         );
     }
 
     if (error) {
         return (
-            <div className="p-6 text-red-600">
-                {error}
-            </div>
-        );
+            <main className="p-0">
+                <div className="rounded-xl border border-red-200 bg-red-50 p-4 sm:p-6 dark:border-red-900 dark:bg-red-950/30">
+                    <h2 className="font-semibold text-red-700 dark:text-red-400">
+                        Failed to load user
+                    </h2>
+
+                    <p className="mt-2 wrap-break-word text-m text-red-600 dark:text-red-400">
+                        {error}
+                    </p>
+
+                    <button
+                        onClick={() => router.push("/admin/users")}
+                        className="mt-4 w-full rounded-lg bg-red-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-red-700 sm:w-auto"
+                    >
+                        Back to Users
+                    </button>
+                </div>
+            </main>
+        )
     }
 
     if (!user || !token) {
@@ -89,26 +109,22 @@ export default function AdminUserDetailsPage() {
     }
 
     return (
-        <main className="space-y-8 p-6">
+        <main className="space-y-6 p-0 sm:space-y-8">
             <div>
-
                 <button
-                    onClick={() =>
-                        router.push("/admin/users")
-                    }
-                    className="mb-4 inline-flex items-center gap-2"
+                    onClick={() => router.push("/admin/users")}
+                    className="mb-4 inline-flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm font-medium text-gray-600 transition hover:bg-gray-110 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-white"
                 >
                     <ArrowLeft size={18} />
-                    Back to Users
+                    <span>Back to Users</span>
                 </button>
 
-                <div className="flex items-center justify-between">
-
-                    <div>
-                        <h1 className="text-3xl font-bold">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="min-w-0">
+                        <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white">
                             User Details
                         </h1>
-                        <p className="text-gray-500">
+                        <p className="mt-1 text-sm text-gray-500 sm:text-base dark:text-gray-400">
                             Manage user account
                         </p>
                     </div>
@@ -116,7 +132,7 @@ export default function AdminUserDetailsPage() {
                     {!editing && (
                         <button
                             onClick={() => setEditing(true)}
-                            className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700"
+                            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700 sm:w-auto"
                         >
                             <Pencil size={18} />
                             Edit User
@@ -125,7 +141,7 @@ export default function AdminUserDetailsPage() {
                 </div>
             </div>
 
-            {!editing ? (
+            {editing ? (
                 <UserEditForm
                     user={user}
                     onCancel={() => setEditing(false)}
@@ -135,14 +151,10 @@ export default function AdminUserDetailsPage() {
                     }}
                 />
             ) : (
-                <UserDetails
-                    user={user}
-                />
+                <UserDetails user={user} />
             )}
 
-            <UserOrders
-                orders={orders}
-            />
+            <UserOrders orders={orders} />
         </main>
     );
 }

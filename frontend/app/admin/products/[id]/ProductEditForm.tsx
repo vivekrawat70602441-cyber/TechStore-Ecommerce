@@ -31,9 +31,9 @@ export default function ProductEditForm({
     return (
         <form
             onSubmit={handleSubmit}
-            className="rounded-2xl border border-gray-200 bg-white p-8 dark:border-slate-700 dark:bg-slate-900"
+            className="w-full min-w-0 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-6 md:p-8 dark:border-slate-700 dark:bg-slate-900"
         >
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid min-w-0 grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
 
                 <ProductEditBasicInfo
                     product={product}

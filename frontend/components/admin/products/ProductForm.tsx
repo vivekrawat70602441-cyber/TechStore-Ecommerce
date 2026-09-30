@@ -61,11 +61,7 @@ export default function ProductForm() {
         >
     ) => {
 
-        const {
-            name,
-            value,
-            type,
-        } = e.target;
+        const { name, value, type } = e.target;
 
         setFormData((previous) => ({
             ...previous,
@@ -83,10 +79,7 @@ export default function ProductForm() {
         e: React.ChangeEvent<HTMLInputElement>
     ) => {
 
-        const {
-            name,
-            checked,
-        } = e.target;
+        const { name, checked } = e.target;
 
         setFormData((previous) => ({
             ...previous,
@@ -143,7 +136,7 @@ export default function ProductForm() {
                 return;
             }
 
-            alert("Product created succesfully");
+            alert("Product created successfully");
             router.push("/admin/products");
         } catch (error) {
             console.error("Create product error:", error);
@@ -156,7 +149,7 @@ export default function ProductForm() {
     return (
         <form
             onSubmit={handleSubmit}
-            className="space-y-8"
+            className="w-full min-w-0 space-y-6 sm:space-y-8"
         >
             {/* Basic Information */}
 
@@ -174,9 +167,9 @@ export default function ProductForm() {
 
             {/* Description */}
 
-            <section className="rounded-x bg-white p-6 shadow dark:bg-slate-900">
+            <section className="w-full min-w-0 rounded-xl border border-gray-200 bg-white p-4 shadow-sm sm:p-6 dark:border-slate-700 dark:bg-slate-900">
 
-                <h2 className="mb-6 text-xl font-semibold text-gray-900 dark:text-white">
+                <h2 className="mb-5 text-lg font-semibold text-gray-900 sm:mb sm:text-xl dark:text-white">
                     Description
                 </h2>
 
@@ -186,7 +179,7 @@ export default function ProductForm() {
                     onChange={handleChange}
                     rows={6}
                     placeholder="Describe the product..."
-                    className="w-full rounded-lg border border-gray-300 bg-white p-3 text-gray-900 outline-none focus:border-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                    className="w-full resize-none rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition focus:border-blue-600 sm:text-base dark:border-slate-700 dark:bg-slate-800 dark:text-white"
                 />
 
             </section>
@@ -207,12 +200,12 @@ export default function ProductForm() {
 
             {/* Buttons */}
 
-            <div className="flex justify-end gap-4">
+            <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end sm:gap-4">
 
                 <button
                     type="button"
                     onClick={() => router.push("/admin/products")}
-                    className="rounded-lg border border-gray-300 px-6 py-3 font-semibold text-gray-700 hover:bg-gray-100 dark:border-slate-700 dark:text-gray-300 dark:hover:bg-slate-800"
+                    className="w-full rounded-lg border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-100 sm:w-auto dark:border-slate-700 dark:text-gray-300 dark:hover:bg-slate-800"
                 >
                     Cancel
                 </button>
@@ -220,7 +213,7 @@ export default function ProductForm() {
                 <button
                     type="submit"
                     disabled={submitting}
-                    className="rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
+                    className="w-full rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
                 >
                     {submitting
                         ? "Creating..."

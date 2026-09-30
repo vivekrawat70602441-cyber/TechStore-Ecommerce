@@ -14,10 +14,7 @@ export default function ProtectedRoute({
 
     const router = useRouter();
 
-    const {
-        user,
-        loading,
-    } = useAuth();
+    const { user, loading } = useAuth();
 
     useEffect(() => {
 

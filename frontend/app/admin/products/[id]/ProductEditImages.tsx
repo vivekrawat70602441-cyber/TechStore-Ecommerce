@@ -17,7 +17,7 @@ export default function ProductEditImages({
 }: ProductEditImagesProps) {
     return (
         <>
-            <div className="md:col-span-2">
+            <div className="min-w-0 md:col-span-2">
                 <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                     Main Image URL
                 </label>
@@ -29,11 +29,11 @@ export default function ProductEditImages({
                         handleChange("image", e.target.value)
                     }
                     placeholder="/products/laptop.jpg"
-                    className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                    className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-blue-500 sm:text-base dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placholder:text-gray-500"
                 />
             </div>
 
-            <div className="md:col-span-2">
+            <div className="min-w-0 md:col-span-2">
                 <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                     Additional Image URLs
                 </label>
@@ -51,10 +51,10 @@ export default function ProductEditImages({
                     }}
 
                     placeholder="/products/laptop-1.jpg, /products/laptop-2.jpg"
-                    className="w-full resize-none rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                    className="w-full resize-none rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition placeholder:text-gray focus:border-blue-500 sm:text-base dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-gray-500"
                 />
 
-                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                <p className="mt-2 wrap-break-word text-xs leading-5 text-gray-500 sm:text-sm dark:text-gray-400">
                     Separate multiple image URLs with commas.
                 </p>
             </div>

@@ -108,7 +108,7 @@ export default function AdminPage() {
                     )}
 
                     {!loading && error && (
-                        <div className="mx-auto mt-10 max-w-xl rounded-2xl border border-red-200 bg-red-50 p-8 text-center dark:border-red-900 dark:bg-red-950">
+                        <div className="mx-auto mt-10 max-w-xl rounded-2xl border border-red-200 bg-red-50 p-5 text-center dark:border-red-900 dark:bg-red-950">
 
                             <h1 className="text-2xl font-bold text-red-600">
                                 Access Denied
@@ -128,7 +128,7 @@ export default function AdminPage() {
                             <div className="mt-10">
                                 <div className="mb-8">
 
-                                    <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
+                                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
                                         Admin Dashboard
                                     </h1>
 
@@ -138,7 +138,7 @@ export default function AdminPage() {
 
                                 </div>
 
-                                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                                <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
                                     <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
                                         <p className="text-sm text-gray-500 dark:text-gray-400">
                                             Admin Status
@@ -163,7 +163,7 @@ export default function AdminPage() {
 
                                     <Link
                                         href="/admin/products"
-                                        className="block rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-ld dark:border-slate-700 dark:bg-slate-900"
+                                        className="block rounded-2xl border border-gray-200 bg-white p-4 sm:p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-ld dark:border-slate-700 dark:bg-slate-900"
                                     >
 
                                         <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -194,13 +194,13 @@ export default function AdminPage() {
 
                                 </div>
 
-                                <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+                                <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-6 lg:p-8 dark:border-slate-700 dark:bg-slate-900">
 
                                     <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                                         Welcome, Admin
                                     </h2>
 
-                                    <p className="mt-3 text-gray-500 dark:text-gray-400">
+                                    <p className="mt-3 text-sm leading-7 text-gray-500 sm:text-base dark:text-gray-400">
                                         The TechStore Admin Dashboard is a centralized management system designed to efficiently manage and monitor the entire e-commerce platform. 
                                         It provides administrators with an overview of important store activities, including products, orders, users, sales, and overall store performance. 
                                         Administrators can add, update, and manage products, monitor customer orders, track order statuses, and manage essential store data through a clean and responsive interface. 
@@ -208,7 +208,7 @@ export default function AdminPage() {
                                         With authentication and role-based access control, the Admin Dashboard provides a secure and organized environment for managing the TechStore e-commerce platform.
                                     </p>
 
-                                    <p className="mt-2 text-sm text-gray-400">
+                                    <p className="mt-2 break-all text-sm text-gray-400">
                                         USER ID: {adminData.user.userId}
                                     </p>
 

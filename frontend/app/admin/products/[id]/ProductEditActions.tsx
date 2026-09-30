@@ -9,16 +9,14 @@ export default function ProductEditActions({
     saving,
 }: ProductEditActionsProps) {
     return (
-        <div className="mt-8 flex justify-end">
+        <div className="mt-6 flex justify-end sm:mt-8">
             <button
                 type="submit"
                 disabled={saving}
-                className="flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
             >
                 <Save size={18} />
-                {saving
-                    ? "Saving..."
-                    : "Save Changed"}
+                {saving ? "Saving..." : "Save Changes"}
             </button>
         </div>
     );
