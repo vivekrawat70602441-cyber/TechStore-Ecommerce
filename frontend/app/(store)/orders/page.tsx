@@ -2,34 +2,17 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import Container from "@/components/common/Container";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import FadeUp from "@/components/animations/FadeUp";
+import OrderCard from "@/components/orders/OrderCard";
 
 import { FiPackage } from "react-icons/fi";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
 import { authFetch } from "@/lib/authFetch";
+import type { Order } from "@/types/OrderTypes";
 
 const API = process.env.NEXT_PUBLIC_API_URL;
-
-interface Order {
-    _id: string;
-    totalPrice: number;
-    status: string;
-    createdAt: string;
-
-    products: {
-        quantity: number;
-        price: number;
-
-        product: {
-            _id: string;
-            name: string;
-            image: string;
-        };
-    }[];
-}
 
 export default function OrdersPage() {
 
@@ -45,22 +28,22 @@ export default function OrdersPage() {
                 const response = await authFetch(
                     `${API}/orders`,
                     {
-                        headers: {
-                        },
-                    }
-                );
+                        headers: {},
+                    });
 
                 const data = await response.json();
 
                 if (response.ok) {
                     setOrders(data.orders);
+                } else {
+                    console.error("Failed to fetch orders:", data.message);
                 }
 
             } catch (error) {
-                console.error(error);
+                console.error("Fetch orders error:", error);
+            } finally {
+                setLoading(false);
             }
-
-            setLoading(false);
         };
 
         fetchOrders();
@@ -132,83 +115,11 @@ export default function OrdersPage() {
                         ) : (
                             <div className="space-y-6">
                                 {orders.map((order) => (
-
-                                    <div
+                                    <OrderCard
                                         key={order._id}
-                                        className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900"
-                                    >
-                                        <div className="flex items-center justify-between">
-
-                                            <div>
-                                                <h2 className="text-xl font-bold dark:text-white">
-                                                    Order #{order._id.slice(-6)}
-                                                </h2>
-
-                                                <p className="text-sm text-gray-500">
-
-                                                    {new Date(
-                                                        order.createdAt
-                                                    ).toLocaleDateString()}
-
-                                                </p>
-
-                                            </div>
-
-                                            <span className="rounded-full bg-yellow-100 px-4 py-2 text-sm font-semibold text-yellow-700">
-                                                {order.status}
-                                            </span>
-
-                                        </div>
-
-                                        <div className="mt-6 space-y-4">
-                                            {order.products.map((item) => (
-
-                                                <div
-                                                    key={item.product._id}
-                                                    className="flex items-center gap-4"
-                                                >
-
-                                                    <Image
-                                                        src={item.product.image}
-                                                        alt={item.product.name}
-                                                        width={80}
-                                                        height={80}
-                                                        className="h-20 w-20 rounded-xl object-cover"
-                                                    />
-
-                                                    <div className="flex-1">
-
-                                                        <h3 className="font-semibold dark:text-white">
-                                                            {item.product.name}
-                                                        </h3>
-
-                                                        <p className="text-gray-500">
-                                                            Qty : {item.quantity}
-                                                        </p>
-
-                                                    </div>
-
-                                                    <div className="font-bold dark:text-white">
-                                                        ₹{item.price.toLocaleString("en-IN")}
-                                                    </div>
-
-                                                </div>
-
-                                            ))}
-
-                                        </div>
-
-                                        <div className="mt-6 border-t pt-4 text-right">
-
-                                            <span className="text-xl font-bold text-blue-600">
-                                                Total ₹{order.totalPrice.toLocaleString("en-IN")}
-                                            </span>
-
-                                        </div>
-
-                                    </div>
+                                        order={order}
+                                    />
                                 ))}
-
                             </div>
                         )}
 

@@ -404,6 +404,14 @@ export const verifyPayment = async (req, res) => {
                 totalPrice: finalTotal,
                 payment: payment._id,
                 status: "Confirmed",
+
+                statusHistory: [
+                    {
+                        status: "Confirmed",
+                        message: "Your order has been confirmed.",
+                        timestamp: new Date(),
+                    },
+                ],
             });
 
         orderCreated = true;

@@ -17,6 +17,7 @@ import OrderDates from "@/components/admin/orders/details/OrderDates";
 import OrdersLoading from "@/components/admin/orders/list/OrdersLoading";
 import OrdersAccessDenied from "@/components/admin/orders/list/OrdersAccessDenied";
 import OrdersError from "@/components/admin/orders/list/OrdersError";
+import OrderLocationManager from "@/components/admin/orders/details/OrderLocationManager";
 
 const API = process.env.NEXT_PUBLIC_API_URL;
 
@@ -167,6 +168,12 @@ export default function AdminOrderDetailsPage() {
                 order={order}
                 updating={updating}
                 onStatusChange={handleStatusChange}
+            />
+
+            <OrderLocationManager
+                 orderId={order._id}
+                 initialDispatchLocation={order.dispatchlocation}
+                 initialDeliveryLocation={order.deliveryLocation}
             />
 
             <OrderSummary order={order} />

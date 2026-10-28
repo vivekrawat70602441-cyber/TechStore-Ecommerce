@@ -29,7 +29,7 @@ export default function OrderShippingAddress({
 
                 <p>Pincode: {shippingAddress.pincode}</p>
 
-                <p>Phone: {shippingAddress.email}</p>
+                <p>Phone: {shippingAddress.phone}</p>
 
                 <p>Email: {shippingAddress.email}</p>
             </div>
