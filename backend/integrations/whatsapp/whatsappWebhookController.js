@@ -1,4 +1,4 @@
-import WebhookEvent from "../../models/WebhookEvent";
+import WebhookEvent from "../../models/WebhookEvent.js";
 
 export const verifyWhatsAppWebhook = (req, res) => {
     const mode = req.query["hub.mode"];
