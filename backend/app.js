@@ -12,6 +12,7 @@ import paymentRoutes from "./routes/paymentRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 import newsletterRoutes from "./routes/newsletterRoutes.js";
 import chatRoutes from "./routes/chatRoutes.js";
+import whatsappRoutes from "./integrations/whatsapp/whatsappRoutes.js";
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use("/admin/statistics", adminStatisticsRoutes);
 app.use("/contact", contactRoutes);
 app.use("/newsletter", newsletterRoutes);
 app.use("/api/chat", chatRoutes);
+app.use("/webhooks/whatsapp", whatsappRoutes);
 
 app.get("/", (req, res) => {
     res.send("Backend is Running 🚀");
