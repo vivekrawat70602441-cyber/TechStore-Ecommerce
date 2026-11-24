@@ -20,7 +20,13 @@ app.use(cors({
     origin: process.env.FRONTEND_URL,
     credentials: true,
 }));
-app.use(express.json());
+app.use(express.json({
+    verify: (req, res, buf) => {
+        req.rawBody = Buffer.from(buf);
+    },
+  })
+);
+
 app.use("/products", productRoutes);
 app.use("/users", userRoutes);
 app.use("/cart", cartRoutes);
