@@ -6,18 +6,22 @@ const webhookEventSchema = new mongoose.Schema(
             type: String,
             required: true,
             unique: true,
+            index: true,
         },
 
         phoneNumberId: {
             type: String,
+            required: true,
         },
 
         from: {
             type: String,
+            required: true,
         },
 
         messageType: {
             type: String,
+            required: true,
         },
 
         payload: {
@@ -29,15 +33,33 @@ const webhookEventSchema = new mongoose.Schema(
             type: String,
             enum: ["pending", "processing", "processed", "failed"],
             default: "pending",
+            index: true,
         },
 
-        attemps: {
+        attempts: {
             type: Number,
             default: 0,
         },
 
-        processedAt: Date,
-        lastError: String,
+        processingStartedAt: {
+            type: Date,
+            default: null,
+        },
+
+        processedAt: {
+            type: Date,
+            default: null,
+        },
+
+        nextRetryAt: {
+            type: Date,
+            default: null,
+        },
+
+        lastError: {
+            type: String,
+            default: null,
+        },
     },
     {
         timestamps: true,
